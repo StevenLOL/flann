@@ -55,5 +55,46 @@ sudo apt-get install python-dev cmake gcc openssh-server git
 wget https://github.com/pypa/pip/raw/master/contrib/get-pip.py
 sudo python ./get-pip.py
 sudo pip install numpy scipy
+git clone https://github.com/mariusmuja/flann.git
 ~~~
 
+Go the folder flann
+~~~
+mkdir build
+cd build
+cmake ..
+make all
+sudo make install
+~~~
+
+
+To test, create a python file, eg yourPython.py with following content:
+
+~~~
+
+#coding=utf-8
+from pyflann import *
+from numpy import *
+from numpy.random import *
+
+dataset = rand(10000, 400)
+testset = rand(1000, 400)
+flann = FLANN()
+#建索引，自动调参数,　会运行很多词建立很多索引，目的是找到最佳参数
+params = flann.build_index(dataset, algorithm="autotuned", target_precision=0.9, log_level = "info");
+#打印最佳参数，以后就可以用最佳参数，直接建立一个索引
+print params
+#保存索引，以后就可以直接load index
+flann.save_index('./temp.index.bin')
+#测试建立的索引，找出最近的５五个
+result, dists = flann.nn_index(testset,5, checks=params["checks"]);
+#打印检索结果，包含每个测试向量的　5 个临近向量的　index ，就是在dataset 里面的序列号
+print result
+#打印出　测试向量到　5个临近向量的距离
+print dists
+
+~~~
+
+Then python ./yourPython.py
+
+Done!
