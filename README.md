@@ -41,3 +41,12 @@ Bug reporting
 -------------
 
 Please report bugs or feature requests using [github's issue tracker](http://github.com/mariusmuja/flann/issues).
+
+
+
+
+
+
+#How to install?
+To say you have ubuntu, then:
+
