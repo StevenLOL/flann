@@ -58,7 +58,7 @@ sudo pip install numpy scipy
 git clone https://github.com/mariusmuja/flann.git
 ~~~
 
-Go the folder flann
+Go to folder flann
 ~~~
 mkdir build
 cd build
