@@ -50,3 +50,10 @@ Please report bugs or feature requests using [github's issue tracker](http://git
 #How to install?
 To say you have ubuntu, then:
 
+~~~
+sudo apt-get install python-dev cmake gcc openssh-server git
+wget https://github.com/pypa/pip/raw/master/contrib/get-pip.py
+sudo python ./get-pip.py
+sudo pip install numpy scipy
+~~~
+
