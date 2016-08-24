@@ -122,6 +122,8 @@ class FLANN(object):
         nqpts = qpts.shape[0]
 
         assert qpts.shape[1] == dim, 'data and query must have the same dims'
+        if num_neighbors>npts:
+            num_neighbors=npts
         assert npts >= num_neighbors, 'more neighbors than there are points'
 
         result = np.empty((nqpts, num_neighbors), dtype=index_type)
@@ -239,6 +241,8 @@ class FLANN(object):
         nqpts = qpts.shape[0]
 
         assert qpts.shape[1] == dim, 'data and query must have the same dims'
+        if num_neighbors>npts:
+            num_neighbors=npts
         assert npts >= num_neighbors, 'more neighbors than there are points'
 
         result = np.empty((nqpts, num_neighbors), dtype=index_type)
